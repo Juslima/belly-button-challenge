@@ -14,55 +14,24 @@ The main visualizations provided by the dashboard are:
 
 By building this interactive dashboard, users can gain valuable insights into the microbial diversity in human navels and observe the prevalence of specific microbial species across different samples. This tool may be helpful for researchers, students, and anyone interested in exploring and understanding the intricacies of human microbiota.
 
+Explanation:
 
-Instructions
-Complete the following steps:
+1. The code defines the URL from which to fetch the JSON data, and then uses D3 to read and log the data to the console.
 
-Use the D3 library to read in samples.json from the URL https://2u-data-curriculum-team.s3.amazonaws.com/dataviz-classroom/v1.1/14-Interactive-Web-Visualizations/02-Homework/samples.json.
+2. The `init()` function is called when the page loads, and it performs the following tasks:
+   a. It selects the dropdown menu element using D3.
+   b. It fetches the JSON data from the provided URL and retrieves the sample names from the data.
+   c. It populates the dropdown menu with the sample names as options.
+   d. It selects the first sample from the list and then builds four initial plots (metadata, bar chart, bubble chart, and gauge chart) using the `buildMetadata`, `buildBarChart`, `buildBubbleChart`, and `buildGaugeChart` functions.
 
-Create a horizontal bar chart with a dropdown menu to display the top 10 OTUs found in that individual.
+3. The `buildMetadata(sample)` function populates the metadata panel with information related to the selected sample. It filters the metadata based on the selected sample and appends key-value pairs to the metadata panel using D3.
 
-Use sample_values as the values for the bar chart.
+4. The `buildBarChart(sample)` function builds a horizontal bar chart for the selected sample. It filters the sample data based on the selected sample, selects the top ten items to display, and then creates a Plotly trace for the bar chart with sample values on the x-axis and OTU (Operational Taxonomic Unit) IDs on the y-axis.
 
-Use otu_ids as the labels for the bar chart.
+5. The `buildBubbleChart(sample)` function builds a bubble chart for the selected sample. It filters the sample data based on the selected sample and creates a Plotly trace for the bubble chart, with OTU IDs on the x-axis, sample values on the y-axis, and the marker size and color representing the sample values and OTU IDs.
 
-Use otu_labels as the hovertext for the chart.
+6. The `optionChanged(value)` function is called when the user selects a different sample from the dropdown menu. It logs the newly selected value and then calls the four functions (`buildMetadata`, `buildBarChart`, `buildBubbleChart`, and `buildGaugeChart`) to update the dashboard with the data and charts for the new sample.
 
-bar Chart
+7. The `init()` function is called to initialize the dashboard when the page loads.
 
-Create a bubble chart that displays each sample.
-
-Use otu_ids for the x values.
-
-Use sample_values for the y values.
-
-Use sample_values for the marker size.
-
-Use otu_ids for the marker colors.
-
-Use otu_labels for the text values.
-
-Bubble Chart
-
-Display the sample metadata, i.e., an individual's demographic information.
-
-Display each key-value pair from the metadata JSON object somewhere on the page.
-
-hw
-
-Update all the plots when a new sample is selected. Additionally, you are welcome to create any layout that you would like for your dashboard. An example dashboard is shown as follows:
-
-hw
-
-Deploy your app to a free static page hosting service, such as GitHub Pages. Submit the links to your deployment and your GitHub repo. Ensure that your repository has regular commits and a thorough README.md file
-
-Advanced Challenge Assignment (Optional with no extra points earning)
-The following task is advanced and therefore optional.
-
-Adapt the Gauge Chart from https://plot.ly/javascript/gauge-charts/Links to an external site. to plot the weekly washing frequency of the individual.
-
-You will need to modify the example gauge code to account for values ranging from 0 through 9.
-
-Update the chart whenever a new sample is selected.
-
-Weekly Washing Frequency Gauge
+Overall, this code demonstrates how to use D3 and Plotly to create an interactive web visualization dashboard with dropdown functionality to select different samples and view corresponding metadata and charts.
